@@ -1,25 +1,33 @@
 ﻿#region
 using System;
 using BlockCypher.Objects;
+using BlockCypher.Pcl;
 
 #endregion
 
-namespace BlockCypher.Test {
-    internal class Program {
-        private static void Main(string[] args) {
-            Console.WriteLine("Token?");
-            var token = Console.ReadLine();
+namespace BlockCypher.Test
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            try
+            {
+                var b = new Blockcypher("f4dfb3efeb9d4e5ca036fbfab5d919c9", Endpoint.BtcTest3);
 
-            var b = new Blockcypher(token, Endpoint.BtcTest3);
+                var json = b.Send("mwv4fzSSxa5FTAGekECBbdLDk3tCLBxXJj",
+                    "mg5svxPWuKwjBi8EhJUUdu985ub5dyRJDP",
+                    "dc2e6bf2fd9dcbb79fc11f86acebb3ed2a85a304840e73e02930f63a3f154dde",
+                    "03c0cb46037f7492fd46eaf783935c678d1ba17fc9d047a2dec4e3697fe9ed63a8",
+                    new Satoshi(10000)).Result.ToJson();
 
-            var fromAddress = new AddressInfo("mtWg6ccLiZWw2Et7E5UqmHsYgrAi5wqiov", // TESTNET
-                "1af97b1f428ac89b7d35323ea7a68aba8cad178a04eddbbf591f65671bae48a2", // HEX
-                "03bb318b00de944086fad67ab78a832eb1bf26916053ecd3b14a3f48f9fbe0821f"); // COMPRESSED
-            var toAddress = new AddressInfo("n2XgDw5DixTyxFKKxFcHuK5KSaUvS2UAoj", // TESTNET
-                "477fcfc70eafd99f235d3050c4b8f4a1a6ae9b8e1a7f5cc1a8abb49e901f0943", // HEX
-                "034f6f8a9e6ce7d665f70fd1875b4d8f8138bcc8f6c75f8a030a6dd194cc2c197b"); // COMPRESSED
-
-            //Console.WriteLine(b.Send(fromAddress, toAddress, 25000).Result.ToJson());
+                Console.WriteLine(json);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
 
             Console.ReadKey();
         }
