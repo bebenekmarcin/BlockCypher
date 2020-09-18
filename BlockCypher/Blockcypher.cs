@@ -111,6 +111,11 @@ namespace BlockCypher {
             }
         }
 
+        public Task<Transaction> GetTransaction(string transactionHash)
+        {
+            return GetAsync<Transaction>($"txs/{transactionHash}");
+        }
+
         public Task<AddressBalance> GetBalanceForAddress(string address) {
             return GetAsync<AddressBalance>(string.Format("addrs/{0}", address));
         }
