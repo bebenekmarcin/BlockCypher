@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFramework>net471</TargetFramework>
     <RepositoryUrl>https://github.com/bebenekmarcin/BlockCypher</RepositoryUrl>
     <PackageProjectUrl>https://github.com/bebenekmarcin/BlockCypher</PackageProjectUrl>
     <Authors>Marcin Bebenek</Authors>
@@ -9,7 +9,7 @@
     <Product />
     <Description>http://www.blockcypher.com</Description>
     <PackageTags>marcin bebenek bebenekmarcin block cypher blockcyper bitcoin crypto</PackageTags>
-    <Version>1.0.24</Version>
+    <Version>1.0.25</Version>
   </PropertyGroup>
 
   <ItemGroup>
